@@ -16,12 +16,15 @@
             "src": "/api/(.*)",
             "dest": "main.py"
         },
+        // Sirve los archivos estáticos desde la carpeta 'frontend'
         {
-            "handle": "filesystem"
+            "src": "/frontend/(.*)",
+            "dest": "/frontend/$1"
         },
+        // Cualquier otra ruta va a tu SPA principal (index.html) dentro de 'frontend'
         {
             "src": "/(.*)",
-            "dest": "/index.html"
+            "dest": "/frontend/index.html"
         }
     ]
 }
