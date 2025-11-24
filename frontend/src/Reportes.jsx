@@ -7,7 +7,7 @@ const Reportes = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/drive-files')
+    fetch('/api/drive-files')
       .then(response => {
         if (!response.ok) {
           return response.json().then(err => {
