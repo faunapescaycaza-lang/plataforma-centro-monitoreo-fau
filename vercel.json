@@ -17,8 +17,8 @@
       "dest": "main.py"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "src": "/(.*\\.(css|js|map|ico|png|jpg|jpeg|gif|svg))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
@@ -26,4 +26,5 @@
     }
   ]
 }
+
 
