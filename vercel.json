@@ -11,7 +11,17 @@
             "config": { "distDir": "dist" }
         }
     ],
-    "rewrites": [
-        { "source": "/api/(.*)", "destination": "/main.py" }
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "main.py"
+        },
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
     ]
 }
