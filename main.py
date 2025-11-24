@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, jsonify
 from flask_cors import CORS
 from google.oauth2 import service_account
@@ -23,11 +24,21 @@ def get_drive_files():
     files with these images, and returns only the reports.
     This version is case-insensitive and whitespace-agnostic.
     """
-    if not os.path.exists(SERVICE_ACCOUNT_FILE):
-        raise FileNotFoundError(f"Service account file not found at: {SERVICE_ACCOUNT_FILE}")
+    # --- Google Credentials Handling ---
+    # In Vercel, credentials are in an env var. Locally, they're in a file.
+    creds_json_str = os.getenv('GOOGLE_CREDENTIALS_JSON')
 
-    creds = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    if creds_json_str:
+        # Running on Vercel or with an env var
+        creds_info = json.loads(creds_json_str)
+        creds = service_account.Credentials.from_service_account_info(creds_info, scopes=SCOPES)
+    elif os.path.exists(SERVICE_ACCOUNT_FILE):
+        # Running locally with a file
+        creds = service_account.Credentials.from_service_account_file(
+            SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    else:
+        # No credentials found
+        raise FileNotFoundError("Google Drive credentials not found. Set GOOGLE_CREDENTIALS_JSON or provide 'google-credentials.json'.")
 
     try:
         service = build('drive', 'v3', credentials=creds)
