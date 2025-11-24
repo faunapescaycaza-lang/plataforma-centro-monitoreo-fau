@@ -1,0 +1,106 @@
+.centro-monitoreos-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center;
+  /* align-items: center; */ /* Removed as logos will be centered by their own container */
+  height: calc(100vh - 60px); /* Adjust height to account for potential headers */
+  background-color: #1a1a1a;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: auto; /* Use auto to only show scrollbars when needed */
+}
+
+.centro-monitoreos-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.centro-monitoreos-container svg {
+  /* Scale SVG to fit its container */
+  max-width: 100%;
+  max-height: 100%;
+  height: auto; /* Maintain aspect ratio */
+  width: auto;
+}
+
+.graph-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graph-node {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  
+  transform: rotate(var(--angle, 0deg)) translate(200px) rotate(calc(-1 * var(--angle, 0deg))) scale(var(--scale, 1));
+}
+
+.center-node {
+  background-color: #e04141;
+  box-shadow: 0 0 15px rgba(224, 65, 65, 0.7);
+  width: 120px;
+  height: 120px;
+  z-index: 5;
+  transform: scale(var(--scale, 1));
+}
+
+.graph-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.graph-lines line {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 2;
+}
+
+
+
+.centro-monitoreos-container h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.centro-monitoreos-container p {
+  font-size: 1.2em;
+}
+
+.logos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allow logos to wrap to the next line if needed */
+  gap: 20px; /* Space between logos */
+  margin-top: 20px; /* Space above the logo container */
+  padding: 20px; /* Padding inside the logo container */
+}
+
+.logo-img {
+  max-width: 100px; /* Adjusted to a smaller size */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the entire image is visible */
+  border-radius: 8px; /* Optional: subtle rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow */
+}

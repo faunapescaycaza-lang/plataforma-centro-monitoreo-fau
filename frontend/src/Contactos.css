@@ -1,0 +1,63 @@
+.contactos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content */
+  min-height: calc(100vh - 60px);
+  background-color: #242424;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  gap: 15px;
+}
+
+.contact-row {
+  display: grid; /* Use grid for better alignment */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  gap: 20px; /* Space between contact persons */
+  width: 100%;
+  max-width: 1200px; /* Optional: constrain the max width of the grid */
+  justify-items: center; /* Center items within their grid cells */
+}
+
+.contact-person {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 250px;
+  min-height: 120px; /* Further reduced height */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.contact-person h2 {
+  color: #007bff;
+  margin: 0;
+  font-size: 1.4em;
+  width: 100%;
+}
+
+.whatsapp-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #25D366;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: auto; /* Pushes the button to the bottom */
+}
+
+.whatsapp-button:hover {
+  background-color: #1DA851;
+  transform: translateY(-2px);
+}

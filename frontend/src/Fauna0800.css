@@ -1,0 +1,56 @@
+.fauna-0800-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  min-height: calc(100vh - 60px); /* Adjust based on your main menu height */
+  background-color: #242424;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.fauna-header-image {
+  max-width: 30%; /* Made image even smaller */
+  height: auto;
+  margin-top: 20px; /* Add margin to separate from button */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-container-fauna {
+  width: 100%;
+  max-width: 600px; /* Adjust as needed */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #333; /* Darker background for the link container */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Space between elements */
+}
+
+.form-container-fauna p {
+  margin: 0; /* Reset margin for paragraphs within the container */
+  font-size: 1.1em;
+}
+
+.external-form-link {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.2em;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.external-form-link:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}

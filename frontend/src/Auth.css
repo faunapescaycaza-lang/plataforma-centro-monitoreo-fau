@@ -1,0 +1,82 @@
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.auth-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #121212;
+  position: relative;
+}
+
+/* The animated background */
+.auth-container::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    #00aaff,
+    #1e3a8a,
+    #4c1d95,
+    #00aaff
+  );
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
+  filter: blur(100px); /* Creates the soft, ethereal look */
+  opacity: 0.6;
+}
+
+/* The Glassmorphism card */
+.auth-glass-card {
+  position: relative; /* To stay above the background animation */
+  z-index: 1;
+  width: 90%;
+  max-width: 450px;
+  padding: 40px 30px;
+  background: rgba(26, 26, 26, 0.6); /* Semi-transparent black */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.auth-title {
+  font-size: 1.8em; /* Slightly smaller for this layout */
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+/* Wrapper for the Supabase form */
+.auth-form-wrapper {
+  width: 100%;
+}
