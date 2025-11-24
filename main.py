@@ -14,8 +14,9 @@ SERVICE_ACCOUNT_FILE = 'google-credentials.json'
 FOLDER_ID = '1_oO8phdfGt8kdkKHVOoY9YI8mo5lmKCi'
 
 app = Flask(__name__)
-# Allow requests from your React frontend (adjust port if necessary)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+# Allow requests from any origin. For more security, you could restrict
+# this to your Vercel app's domain.
+CORS(app)
 
 def get_drive_files():
     """
