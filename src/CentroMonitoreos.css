@@ -5,15 +5,12 @@
   align-items: center;
   min-height: 100vh;
   background-color: #1a1a1a;
-  padding: 20px;
   box-sizing: border-box;
   color: #e0e0e0;
 }
 
 /* --- Contenedor Principal del Diagrama --- */
 .network-diagram {
-    max-width: 1500px; /* Más ancho para layout horizontal */
-    margin: 40px auto;
     background: #282828;
     padding: 50px;
     border-radius: 15px;
