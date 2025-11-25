@@ -6,7 +6,7 @@
   background-color: #1a1a1a;
   color: white;
   height: 60px;
-  border-bottom: 1px solid #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Más sutil y flotante */
 }
 
 .main-menu-logo a {
@@ -53,15 +53,15 @@
 }
 
 .menu-button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
-  color: #007bff; /* Accent color on hover */
-  border-color: #007bff;
+  background-color: rgba(0, 170, 255, 0.2); /* Usa el color brand con transparencia */
+  color: #00aaff; /* Color brand en hover */
+  border-color: #00aaff;
 }
 
 /* Specific styling for active menu button */
 .menu-button.active {
-  background-color: #007bff; /* Highlight active button */
-  border-color: #007bff;
+  background-color: #00aaff; /* Usa el color brand */
+  border-color: #00aaff;
   color: white;
 }
 
@@ -101,8 +101,8 @@
 
 .main-menu-logout button {
   background-color: transparent;
-  color: white;
-  border: 1px solid white;
+  color: #00aaff; /* Usar color brand */
+  border: 1px solid #00aaff; /* Borde con color brand */
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -110,8 +110,8 @@
 }
 
 .main-menu-logout button:hover {
-  background-color: white;
-  color: #1a1a1a;
+  background-color: #00aaff; /* Fondo con color brand en hover */
+  color: #1a1a1a; /* Texto oscuro en hover */
 }
 
 /* Hamburger menu - hidden on desktop */
