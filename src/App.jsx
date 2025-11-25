@@ -15,7 +15,7 @@ import ANPCopahueMap from './ANPCopahueMap';
 import CentroMonitoreos from './CentroMonitoreos';
 import Fauna0800 from './Fauna0800';
 import Contactos from './Contactos';
-import Reportes from './Reportes';
+
 import PaginaWeb from './PaginaWeb';
 import MapasPage from './MapasPage';
 import LeyBosqueSurMap from './LeyBosqueSurMap';
@@ -46,7 +46,7 @@ function App() {
         <Route path="centro-monitoreos" element={<CentroMonitoreos />} />
         <Route path="0800-fauna" element={<Fauna0800 />} />
         <Route path="contactos" element={<Contactos />} />
-        <Route path="reportes" element={<Reportes />} />
+
         <Route path="pagina-web" element={<PaginaWeb />} />
       </Route>
     </Routes>

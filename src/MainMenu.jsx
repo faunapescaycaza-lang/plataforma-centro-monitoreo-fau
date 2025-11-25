@@ -42,9 +42,7 @@ const MainMenu = () => {
         <li>
           <Link to="/contactos" onClick={closeMobileMenu}>Contactos</Link>
         </li>
-        <li>
-          <Link to="/reportes" onClick={closeMobileMenu}>Reportes</Link>
-        </li>
+
         <li>
           <Link to="/pagina-web" onClick={closeMobileMenu}>Página Web</Link>
         </li>
