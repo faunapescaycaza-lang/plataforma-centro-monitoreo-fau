@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from './MainLayout';
-// import ProtectedRoute from './ProtectedRoute'; // No longer needed for this test
+import ProtectedRoute from './ProtectedRoute'; // Descomentado
 import AuthPage from './Auth';
 import WelcomeScreen from './WelcomeScreen';
 import Dashboard from './Dashboard';
@@ -15,8 +15,8 @@ import ANPCopahueMap from './ANPCopahueMap';
 import CentroMonitoreos from './CentroMonitoreos';
 import Fauna0800 from './Fauna0800';
 import Contactos from './Contactos';
-import Reportes from './Reportes'; // New Import
-import ReporteDetalle from './ReporteDetalle'; // New Import
+import Reportes from './Reportes';
+import ReporteDetalle from './ReporteDetalle';
 
 import PaginaWeb from './PaginaWeb';
 import MapasPage from './MapasPage';
@@ -26,15 +26,19 @@ import './App.css';
 function App() {
   return (
     <Routes>
-      {/* Auth route is still available if needed */}
       <Route path="/login" element={<AuthPage />} />
 
-      {/* All routes are now public and rendered inside MainLayout */}
-      <Route path="/" element={<MainLayout />}>
-        {/* Default public route */}
+      {/* Todas las rutas dentro de ProtectedRoute requieren autenticación */}
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <MainLayout />
+          </ProtectedRoute>
+        }
+      >
+        {/* Rutas protegidas */}
         <Route index element={<WelcomeScreen />} />
-        
-        {/* Other public routes */}
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="mapas" element={<MapasPage />} />
         <Route path="map/ruta7lagos" element={<Ruta7LagosMap />} />
@@ -48,12 +52,8 @@ function App() {
         <Route path="centro-monitoreos" element={<CentroMonitoreos />} />
         <Route path="0800-fauna" element={<Fauna0800 />} />
         <Route path="contactos" element={<Contactos />} />
-        <Route path="reportes" element={<Reportes />} /> {/* New Route */}
-        <Route path="reportes/:reportId" element={<ReporteDetalle />} /> {/* New Route for Report Detail */}
-
-
-
-
+        <Route path="reportes" element={<Reportes />} />
+        <Route path="reportes/:reportId" element={<ReporteDetalle />} />
         <Route path="pagina-web" element={<PaginaWeb />} />
       </Route>
     </Routes>

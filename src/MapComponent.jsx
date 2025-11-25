@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polygon } from 'react-leaflet';
-import Papa from 'papaparse';
+import Papa from "papaparse";
 import 'leaflet/dist/leaflet.css';
+import L from 'leaflet'; // Import Leaflet library
+
+// Fix for default Leaflet icons not appearing when served from a non-standard location
+// This block ensures Leaflet looks for its default icons in the 'public/images' directory
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'images/marker-icon-2x.png',
+  iconUrl: 'images/marker-icon.png',
+  shadowUrl: 'images/marker-shadow.png',
+});
+
 
 const MapComponent = () => {
   const [points, setPoints] = useState([]);
@@ -113,4 +125,3 @@ const MapComponent = () => {
 };
 
 export default MapComponent;
-

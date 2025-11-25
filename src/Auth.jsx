@@ -31,11 +31,30 @@ const AuthPage = () => {
             supabaseClient={supabase}
             appearance={{
               theme: ThemeSupa,
+              dark: true, // Activar el modo oscuro de ThemeSupa
               variables: {
                 default: {
                   colors: {
+                    // Colores de la marca principal de la aplicación (azules)
                     brand: '#00aaff',
                     brandAccent: '#0088cc',
+
+                    // Colores de los botones (más oscuros, semi-transparentes para glassmorphism)
+                    defaultButtonBackground: 'rgba(255, 255, 255, 0.1)',
+                    defaultButtonBorder: 'rgba(255, 255, 255, 0.2)',
+                    defaultButtonText: 'white',
+                    defaultButtonBackgroundHover: 'rgba(255, 255, 255, 0.2)',
+
+                    // Colores de los inputs
+                    inputBackground: 'rgba(255, 255, 255, 0.1)',
+                    inputBorder: 'rgba(255, 255, 255, 0.2)',
+                    inputText: 'white',
+                    
+                    // Otros textos
+                    anchorTextColor: '#00aaff',
+                    anchorTextHoverColor: '#0088cc',
+                    messageText: 'white',
+                    errorMessageText: '#ff4d4f',
                   },
                   radii: {
                     borderRadius: '8px',
