@@ -9,7 +9,23 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from typing import List, Dict, Any
 
-load_dotenv()
+# --- Rutas Absolutas para Vercel ---
+# VERCEL_BUILD_DIR es la raíz del proyecto en el entorno de Vercel
+# __file__ es la ruta al script actual (api/drive-files.py)
+# Esto nos permite construir rutas absolutas que funcionan tanto en local como en Vercel.
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR) # Sube un nivel desde /api a la raíz
+
+# Cargar .env desde la raíz del proyecto
+dotenv_path = os.path.join(PROJECT_ROOT, '.env')
+load_dotenv(dotenv_path=dotenv_path)
+
+print(f"Buscando .env en: {dotenv_path}")
+if os.path.exists(dotenv_path):
+    print(".env encontrado.")
+else:
+    print(".env NO encontrado.")
+
 
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 app = FastAPI()
@@ -25,24 +41,29 @@ app.add_middleware(
 def get_drive_files_logic() -> List[Dict[str, Any]]:
     print("--- DEBUGGING VERCEL API ---")
     FOLDER_ID = os.getenv('FOLDER_ID')
-    credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-
+    # La ruta en .env es relativa, la hacemos absoluta aquí
+    relative_credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    
     print(f"FOLDER_ID from env: {FOLDER_ID}")
-    print(f"GOOGLE_APPLICATION_CREDENTIALS from env: {credentials_path}")
+    print(f"Ruta relativa de credenciales desde env: {relative_credentials_path}")
 
-    if not credentials_path or not FOLDER_ID:
-        raise ValueError("Faltan variables de entorno requeridas: GOOGLE_APPLICATION_CREDENTIALS or FOLDER_ID")
+    if not relative_credentials_path or not FOLDER_ID:
+        raise ValueError("Faltan variables de entorno: GOOGLE_APPLICATION_CREDENTIALS or FOLDER_ID")
+
+    # Construir la ruta absoluta al archivo de credenciales
+    credentials_path = os.path.join(PROJECT_ROOT, relative_credentials_path)
+    print(f"Intentando abrir credenciales en ruta absoluta: {credentials_path}")
 
     if not os.path.exists(credentials_path):
-        # Log the current working directory and its contents to see why the file is not found
         cwd = os.getcwd()
-        dir_contents = os.listdir(cwd)
-        api_dir_contents = os.listdir('api') if os.path.exists('api') else 'api directory not found'
-        print(f"Current Working Directory: {cwd}")
-        print(f"Directory Contents: {dir_contents}")
-        print(f"API Directory Contents: {api_dir_contents}")
+        print(f"FALLO: El archivo de credenciales no se encontró. CWD: {cwd}")
+        print(f"Contenido de CWD: {os.listdir(cwd)}")
+        # Comprobar si la carpeta api existe desde CWD
+        if os.path.exists('api'):
+             print(f"Contenido de 'api/': {os.listdir('api')}")
         raise FileNotFoundError(f"El archivo de credenciales no se encontró en la ruta: {credentials_path}")
 
+    print("Archivo de credenciales encontrado. Procediendo...")
     creds = service_account.Credentials.from_service_account_file(credentials_path, scopes=SCOPES)
     service = build('drive', 'v3', credentials=creds)
     
@@ -53,8 +74,6 @@ def get_drive_files_logic() -> List[Dict[str, Any]]:
     ).execute()
     
     all_files = results.get('files', [])
-    
-    # ... (el resto de la lógica sigue igual)
     
     preview_images = {}
     report_files = []
@@ -78,7 +97,7 @@ def get_drive_files_logic() -> List[Dict[str, Any]]:
             report['customImageLink'] = preview_images[normalized_report_base_name]
         enriched_reports.append(report)
         
-    print("--- SUCCESSFULLY FETCHED FILES ---")
+    print("--- ARCHIVOS OBTENIDOS CON ÉXITO ---")
     return enriched_reports
 
 @app.get("/")
@@ -87,9 +106,8 @@ def get_drive_files_endpoint():
         files = get_drive_files_logic()
         return files
     except Exception as e:
-        print(f"--- ERROR IN API ENDPOINT: {str(e)} ---")
-        # Devolver un JSON válido incluso en caso de error
+        print(f"--- ERROR EN EL PUNTO FINAL DE LA API: {str(e)} ---")
         return JSONResponse(
             status_code=500,
-            content={"error": "A server error occurred.", "details": str(e)}
+            content={"error": "Ocurrió un error en el servidor.", "details": str(e)}
         )
