@@ -65,7 +65,7 @@ const AuthPage = () => {
               },
             }}
             providers={['google']}
-            redirectTo={window.location.origin}
+            redirectTo="https://plataforma-centro-monitoreo-fau-cdm.vercel.app"
             localization={{
               variables: {
                 sign_in: {
