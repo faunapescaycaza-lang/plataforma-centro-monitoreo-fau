@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask_cors import CORS
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -81,9 +81,8 @@ def get_drive_files():
         print(f'An error occurred: {error}')
         raise
 
-@app.route('/drive-files')
+@app.route('/')
 def list_drive_files():
-    print(f"Request path received by Flask: {request.path}")
     """API endpoint to get the list of files from Google Drive."""
     try:
         files = get_drive_files()
