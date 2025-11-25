@@ -76,7 +76,7 @@ def get_drive_files_logic() -> List[Dict[str, Any]]:
         
     return enriched_reports
 
-@app.get("/api/drive-files")
+@app.get("/")
 def get_drive_files_endpoint():
     """
     FastAPI endpoint to get the list of files from Google Drive.
