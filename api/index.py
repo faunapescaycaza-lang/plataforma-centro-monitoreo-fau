@@ -81,7 +81,7 @@ def get_drive_files():
         print(f'An error occurred: {error}')
         raise
 
-@app.route('/api/drive-files')
+@app.route('/drive-files')
 def list_drive_files():
     """API endpoint to get the list of files from Google Drive."""
     try:
