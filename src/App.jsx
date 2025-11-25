@@ -15,6 +15,8 @@ import ANPCopahueMap from './ANPCopahueMap';
 import CentroMonitoreos from './CentroMonitoreos';
 import Fauna0800 from './Fauna0800';
 import Contactos from './Contactos';
+import Reportes from './Reportes'; // Existing Import
+
 
 import PaginaWeb from './PaginaWeb';
 import MapasPage from './MapasPage';
@@ -46,6 +48,9 @@ function App() {
         <Route path="centro-monitoreos" element={<CentroMonitoreos />} />
         <Route path="0800-fauna" element={<Fauna0800 />} />
         <Route path="contactos" element={<Contactos />} />
+        <Route path="reportes" element={<Reportes />} /> {/* Existing Route */}
+
+
 
         <Route path="pagina-web" element={<PaginaWeb />} />
       </Route>
