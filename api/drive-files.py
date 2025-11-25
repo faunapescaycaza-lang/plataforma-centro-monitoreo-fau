@@ -38,6 +38,9 @@ def get_drive_files_logic() -> List[Dict[str, Any]]:
     try:
         # Convertir la cadena de texto JSON de la variable de entorno a un diccionario de Python
         creds_info = json.loads(google_creds_json_str)
+        # Solución para la clave privada multilínea desde .env, que causa "Incorrect padding"
+        if 'private_key' in creds_info:
+            creds_info['private_key'] = creds_info['private_key'].replace('\\n', '\n')
     except json.JSONDecodeError:
         raise ValueError("La variable de entorno GOOGLE_CREDENTIALS_JSON no es un JSON válido.")
 
@@ -86,8 +89,11 @@ def get_drive_files_endpoint():
         files = get_drive_files_logic()
         return files
     except Exception as e:
-        print(f"--- ERROR EN EL PUNTO FINAL DE LA API: {str(e)} ---")
+        error_message = f"Error del servidor: {str(e)}"
+        print(f"--- ERROR EN EL PUNTO FINAL DE LA API: {error_message} ---")
+        # ADVERTENCIA: Exponer detalles de errores al cliente puede ser un riesgo de seguridad.
+        # Esto se hace temporalmente para depuración.
         return JSONResponse(
             status_code=500,
-            content={"error": "Ocurrió un error en el servidor.", "details": str(e)}
+            content={"error": error_message}
         )
