@@ -1,21 +1,20 @@
 {
+  "version": 2,
   "builds": [
+    {
+      "src": "api/drive-files.py",
+      "use": "@vercel/python"
+    },
     {
       "src": "package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
-      "src": "api/**/*.py",
-      "use": "@vercel/python"
+      "config": { "distDir": "dist" }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "src": "/api/drive-files",
+      "dest": "/api/drive-files.py"
     },
     {
       "handle": "filesystem"
