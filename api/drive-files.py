@@ -9,23 +9,8 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from typing import List, Dict, Any
 
-# --- Rutas Absolutas para Vercel ---
-# VERCEL_BUILD_DIR es la raíz del proyecto en el entorno de Vercel
-# __file__ es la ruta al script actual (api/drive-files.py)
-# Esto nos permite construir rutas absolutas que funcionan tanto en local como en Vercel.
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(SCRIPT_DIR) # Sube un nivel desde /api a la raíz
-
-# Cargar .env desde la raíz del proyecto
-dotenv_path = os.path.join(PROJECT_ROOT, '.env')
-load_dotenv(dotenv_path=dotenv_path)
-
-print(f"Buscando .env en: {dotenv_path}")
-if os.path.exists(dotenv_path):
-    print(".env encontrado.")
-else:
-    print(".env NO encontrado.")
-
+# Cargar variables de entorno (principalmente para desarrollo local)
+load_dotenv()
 
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 app = FastAPI()
@@ -39,33 +24,28 @@ app.add_middleware(
 )
 
 def get_drive_files_logic() -> List[Dict[str, Any]]:
-    print("--- DEBUGGING VERCEL API ---")
+    print("--- INICIANDO LOGICA DE LA API ---")
     FOLDER_ID = os.getenv('FOLDER_ID')
-    # La ruta en .env es relativa, la hacemos absoluta aquí
-    relative_credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-    
+    # Esta variable ahora contendrá el JSON completo, no una ruta
+    google_creds_json_str = os.getenv('GOOGLE_CREDENTIALS_JSON')
+
     print(f"FOLDER_ID from env: {FOLDER_ID}")
-    print(f"Ruta relativa de credenciales desde env: {relative_credentials_path}")
+    print(f"GOOGLE_CREDENTIALS_JSON está cargado: {bool(google_creds_json_str)}")
 
-    if not relative_credentials_path or not FOLDER_ID:
-        raise ValueError("Faltan variables de entorno: GOOGLE_APPLICATION_CREDENTIALS or FOLDER_ID")
+    if not google_creds_json_str or not FOLDER_ID:
+        raise ValueError("Faltan variables de entorno: GOOGLE_CREDENTIALS_JSON o FOLDER_ID")
 
-    # Construir la ruta absoluta al archivo de credenciales
-    credentials_path = os.path.join(PROJECT_ROOT, relative_credentials_path)
-    print(f"Intentando abrir credenciales en ruta absoluta: {credentials_path}")
+    try:
+        # Convertir la cadena de texto JSON de la variable de entorno a un diccionario de Python
+        creds_info = json.loads(google_creds_json_str)
+    except json.JSONDecodeError:
+        raise ValueError("La variable de entorno GOOGLE_CREDENTIALS_JSON no es un JSON válido.")
 
-    if not os.path.exists(credentials_path):
-        cwd = os.getcwd()
-        print(f"FALLO: El archivo de credenciales no se encontró. CWD: {cwd}")
-        print(f"Contenido de CWD: {os.listdir(cwd)}")
-        # Comprobar si la carpeta api existe desde CWD
-        if os.path.exists('api'):
-             print(f"Contenido de 'api/': {os.listdir('api')}")
-        raise FileNotFoundError(f"El archivo de credenciales no se encontró en la ruta: {credentials_path}")
-
-    print("Archivo de credenciales encontrado. Procediendo...")
-    creds = service_account.Credentials.from_service_account_file(credentials_path, scopes=SCOPES)
+    # Crear credenciales directamente desde el diccionario
+    creds = service_account.Credentials.from_service_account_info(creds_info, scopes=SCOPES)
     service = build('drive', 'v3', credentials=creds)
+    
+    print("Autenticación con Google exitosa. Obteniendo archivos...")
     
     results = service.files().list(
         q=f"'{FOLDER_ID}' in parents and trashed=false",
