@@ -1,0 +1,74 @@
+.reporte-detalle-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    background-color: #242424; /* Dark background from Contactos base */
+    color: white; /* Text color for content */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.reporte-detalle-container h1 {
+    text-align: center;
+    color: #007bff; /* Accent color for headings */
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.reporte-detalle-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between images */
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.reporte-detalle-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reporte-detalle-description {
+    font-size: 1.1em;
+    color: #ccc; /* Lighter text for description */
+    line-height: 1.6;
+    white-space: pre-wrap; /* Preserves whitespace and line breaks */
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .reporte-detalle-container {
+        padding: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .reporte-detalle-container h1 {
+        font-size: 1.6em;
+    }
+    .reporte-detalle-description {
+        font-size: 1em;
+    }
+}

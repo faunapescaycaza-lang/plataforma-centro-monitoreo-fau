@@ -115,7 +115,6 @@
 .app-content {
   flex-grow: 1; /* Takes remaining space */
   padding: 1rem;
-  background-color: #ffffff;
 }
 
 

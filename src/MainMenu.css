@@ -28,7 +28,7 @@
   position: relative; /* For dropdown positioning */
 }
 
-.main-menu-links a, .dropdown-toggle {
+.main-menu-links a {
   color: white;
   text-decoration: none;
   font-size: 1.1em;
@@ -38,9 +38,33 @@
   display: block;
 }
 
-.main-menu-links a:hover, .dropdown-toggle:hover {
-  color: #007bff;
+/* New professional button style */
+.menu-button {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 5px;
+  background-color: transparent; /* Default transparent */
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  border: 1px solid transparent;
 }
+
+.menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+  color: #007bff; /* Accent color on hover */
+  border-color: #007bff;
+}
+
+/* Specific styling for active menu button */
+.menu-button.active {
+  background-color: #007bff; /* Highlight active button */
+  border-color: #007bff;
+  color: white;
+}
+
 
 .dropdown-menu {
   position: absolute;

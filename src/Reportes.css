@@ -3,22 +3,25 @@
     max-width: 1200px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    background-color: transparent; /* Inherit background from parent */
+    color: white; /* Text color for content */
+    border-radius: 8px; /* Added for consistency */
 }
 
 .reportes-container h1 {
     text-align: center;
-    color: #333;
+    color: #007bff; /* Accent color for headings */
     margin-bottom: 30px;
 }
 
 .reportes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Made cards smaller */
     gap: 20px;
 }
 
 .report-card {
-    background-color: #fff;
+    background-color: #333; /* Darker background for cards */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -31,11 +34,30 @@
     transform: translateY(-5px);
 }
 
+.report-images {
+    display: flex; /* Allow multiple images side-by-side or stacked */
+    flex-wrap: wrap; /* Wrap images if too wide */
+    justify-content: center;
+    border-bottom: 1px solid #555; /* Darker border */
+}
+
 .report-image {
     width: 100%;
-    height: 200px; /* Fixed height for images */
+    height: 150px; /* Reduced height for images */
     object-fit: cover; /* Cover the area, crop if necessary */
-    border-bottom: 1px solid #eee;
+    flex-shrink: 0; /* Prevent images from shrinking */
+}
+
+.no-image-placeholder {
+    width: 100%;
+    height: 150px; /* Reduced height for placeholder */
+    background-color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-size: 0.9em;
+    border-bottom: 1px solid #555;
 }
 
 .report-content {
@@ -54,7 +76,7 @@
 
 .report-content p {
     font-size: 0.9em;
-    color: #555;
+    color: #ccc; /* Lighter text for description */
     line-height: 1.5;
     flex-grow: 1; /* Allow paragraph to take available space */
     margin-bottom: 15px;

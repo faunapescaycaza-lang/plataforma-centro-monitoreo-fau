@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Reportes.css';
 
 const Reportes = () => {
@@ -50,13 +51,13 @@ const Reportes = () => {
                   <img key={index} src={url} alt={`${report.title} ${index + 1}`} className="report-image" />
                 ))
               ) : (
-                report.imageUrl && <img src={report.imageUrl} alt={report.title} className="report-image" />
+                <div className="no-image-placeholder">No Image Available</div>
               )}
             </div>
             <div className="report-content">
               <h2>{report.title}</h2>
-              <p>{report.description}</p>
-              <button className="read-more-button">Leer más</button>
+              <p>{report.description.substring(0, 100)}...</p> {/* Show snippet */}
+              <Link to={`/reportes/${report.id}`} className="read-more-button">Leer más</Link>
             </div>
           </div>
         ))}

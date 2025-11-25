@@ -1,30 +1,14 @@
 [
   {
     "id": "1",
-    "title": "Incendio Forestal en Patagonia",
-    "description": "Se ha detectado un incendio de gran magnitud en la zona de bosques nativos de la Patagonia, afectando a cientos de hectáreas. Equipos de bomberos y brigadistas trabajan en la contención.",
+    "title": "Mi Primer Reporte",
+    "description": "Este es un ejemplo de cómo crear tu propio reporte. Puedes cambiar este texto, añadir más detalles y tus propias imágenes. Recuerda usar un ID único para cada reporte.",
     "imageUrls": ["/Imagenes/pagina_fauna.png"]
   },
   {
     "id": "2",
-    "title": "Monitoreo de Fauna en Neuquén",
-    "description": "Continuamos con el monitoreo de diversas especies de fauna silvestre en la provincia de Neuquén. Se han registrado avistamientos de pumas y cóndores en zonas protegidas.",
-    "imageUrls": ["/Imagenes/aviso_fauna.jpg", "https://via.placeholder.com/400x200?text=Monitoreo+2"]
-  },
-  {
-    "id": "3",
-    "title": "Nueva Ley de Bosques Nativos",
-    "description": "Entra en vigencia una nueva legislación para la protección de los bosques nativos, buscando frenar la deforestación y promover la reforestación en áreas críticas.",
-    "imageUrls": ["https://via.placeholder.com/400x200?text=Ley+de+Bosques"]
-  },
-  {
-    "id": "4",
-    "title": "Reporte de Prueba con Múltiples Imágenes",
-    "description": "Este es un reporte de prueba para demostrar la capacidad de mostrar múltiples imágenes por cada entrada de reporte. Puedes agregar más imágenes aquí.",
-    "imageUrls": [
-      "https://via.placeholder.com/400x200?text=Imagen+1",
-      "https://via.placeholder.com/400x200?text=Imagen+2",
-      "https://via.placeholder.com/400x200?text=Imagen+3"
-    ]
+    "title": "Segundo Reporte de Prueba",
+    "description": "Este es un segundo reporte para verificar que la funcionalidad de añadir múltiples reportes y navegar a sus detalles funciona correctamente.",
+    "imageUrls": ["/Imagenes/aviso_fauna.jpg"]
   }
 ]

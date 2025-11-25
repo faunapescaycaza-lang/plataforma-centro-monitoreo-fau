@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import './MainMenu.css';
 import { useAuth } from './AuthProvider'; // Import useAuth
 
 const MainMenu = () => {
   const { signOut } = useAuth(); // Get the signOut function
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation(); // Get current location
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -15,41 +16,42 @@ const MainMenu = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const getLinkClassName = (path) => {
+    return `menu-button ${location.pathname === path ? 'active' : ''}`;
+  };
+
   return (
     <nav className="main-menu">
       <div className="main-menu-logo">
-        <Link to="/">Monitoreo</Link>
+        <Link to="/" className="menu-button">Monitoreo</Link>
       </div>
       <div className="hamburger-menu" onClick={toggleMobileMenu}>
         &#9776; {/* Hamburger Icon */}
       </div>
       <ul className={`main-menu-links ${isMobileMenuOpen ? 'open' : ''}`}>
         <li>
-          <Link to="/" onClick={closeMobileMenu}>Inicio</Link>
+          <Link to="/" onClick={closeMobileMenu} className={getLinkClassName('/')}>Inicio</Link>
         </li>
         <li>
-          <Link to="/mapas" onClick={closeMobileMenu}>Mapas SIG</Link>
+          <Link to="/mapas" onClick={closeMobileMenu} className={getLinkClassName('/mapas')}>Mapas SIG</Link>
         </li>
         <li>
-          <Link to="/dashboard" onClick={closeMobileMenu}>Cámaras</Link>
+          <Link to="/dashboard" onClick={closeMobileMenu} className={getLinkClassName('/dashboard')}>Cámaras</Link>
         </li>
         <li>
-          <Link to="/centro-monitoreos" onClick={closeMobileMenu}>Centro de Monitoreos</Link>
+          <Link to="/centro-monitoreos" onClick={closeMobileMenu} className={getLinkClassName('/centro-monitoreos')}>Centro de Monitoreos</Link>
         </li>
         <li>
-          <Link to="/0800-fauna" onClick={closeMobileMenu}>0800-Fauna</Link>
+          <Link to="/0800-fauna" onClick={closeMobileMenu} className={getLinkClassName('/0800-fauna')}>0800-Fauna</Link>
         </li>
         <li>
-          <Link to="/contactos" onClick={closeMobileMenu}>Contactos</Link>
+          <Link to="/contactos" onClick={closeMobileMenu} className={getLinkClassName('/contactos')}>Contactos</Link>
         </li>
         <li>
-          <Link to="/reportes" onClick={closeMobileMenu}>Reportes</Link>
+          <Link to="/pagina-web" onClick={closeMobileMenu} className={getLinkClassName('/pagina-web')}>Página Web</Link>
         </li>
-
-
-
         <li>
-          <Link to="/pagina-web" onClick={closeMobileMenu}>Página Web</Link>
+          <Link to="/reportes" onClick={closeMobileMenu} className={getLinkClassName('/reportes')}>Reportes</Link>
         </li>
         {/* Logout button for mobile view */}
         <li className="mobile-logout">
