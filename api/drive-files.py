@@ -93,7 +93,3 @@ def list_drive_files():
         return jsonify({"error": f"An API error occurred: {e}"}), 500
     except Exception as e:
         return jsonify({"error": f"An unexpected error occurred: {e}"}), 500
-
-if __name__ == '__main__':
-    # Runs the Flask app on http://127.0.0.1:5000
-    app.run(host='127.0.0.1', port=5000, debug=True)
