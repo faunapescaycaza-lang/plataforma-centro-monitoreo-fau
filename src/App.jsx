@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from './MainLayout';
-import ProtectedRoute from './ProtectedRoute';
+// import ProtectedRoute from './ProtectedRoute'; // No longer needed for this test
 import AuthPage from './Auth';
 import WelcomeScreen from './WelcomeScreen';
 import Dashboard from './Dashboard';
@@ -17,31 +17,24 @@ import Fauna0800 from './Fauna0800';
 import Contactos from './Contactos';
 import Reportes from './Reportes';
 import PaginaWeb from './PaginaWeb';
-import MapasPage from './MapasPage'; // Import the new page
-import LeyBosqueSurMap from './LeyBosqueSurMap'; // Import new map component
+import MapasPage from './MapasPage';
+import LeyBosqueSurMap from './LeyBosqueSurMap';
 import './App.css';
 
 function App() {
   return (
     <Routes>
-      {/* Public route for login */}
+      {/* Auth route is still available if needed */}
       <Route path="/login" element={<AuthPage />} />
 
-      {/* Protected routes */}
-      <Route 
-        path="/" 
-        element={
-          <ProtectedRoute>
-            <MainLayout />
-          </ProtectedRoute>
-        }
-      >
-        {/* Default protected route */}
-        <Route index element={<WelcomeScreen />} /> 
+      {/* All routes are now public and rendered inside MainLayout */}
+      <Route path="/" element={<MainLayout />}>
+        {/* Default public route */}
+        <Route index element={<WelcomeScreen />} />
         
-        {/* Other protected routes rendered inside MainLayout's <Outlet> */}
+        {/* Other public routes */}
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="mapas" element={<MapasPage />} /> {/* Add the new route */}
+        <Route path="mapas" element={<MapasPage />} />
         <Route path="map/ruta7lagos" element={<Ruta7LagosMap />} />
         <Route path="map/comisarias-nqn" element={<ComisariasNQNMap />} />
         <Route path="map/riesgo-incendio-sma" element={<RiesgoIncendioSMAMap />} />
@@ -49,7 +42,7 @@ function App() {
         <Route path="map/anp-domuyo" element={<ANPDomuyoMap />} />
         <Route path="map/anp-nqn" element={<ANPNQNMap />} />
         <Route path="map/anp-copahue" element={<ANPCopahueMap />} />
-        <Route path="map/ley-bosque-sur" element={<LeyBosqueSurMap />} /> {/* Add new route */}
+        <Route path="map/ley-bosque-sur" element={<LeyBosqueSurMap />} />
         <Route path="centro-monitoreos" element={<CentroMonitoreos />} />
         <Route path="0800-fauna" element={<Fauna0800 />} />
         <Route path="contactos" element={<Contactos />} />
