@@ -1,17 +1,21 @@
 import os
 import json
-from fastapi import FastAPI
+from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from typing import List, Dict, Any
 
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
+
 # Configuration
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 
 # Define the FastAPI app instance
-# Vercel will automatically find this 'app' variable
 app = FastAPI()
 
 # Add CORS middleware to allow all origins
@@ -26,18 +30,20 @@ app.add_middleware(
 def get_drive_files_logic() -> List[Dict[str, Any]]:
     """
     Connects to the Google Drive API and fetches the file list.
-    This is the core logic, separated from the web framework.
     """
     FOLDER_ID = os.getenv('FOLDER_ID')
-    GOOGLE_CREDENTIALS_JSON = os.getenv('GOOGLE_CREDENTIALS_JSON')
+    # GOOGLE_APPLICATION_CREDENTIALS es el estándar que la librería de Google busca
+    credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 
-    if not GOOGLE_CREDENTIALS_JSON or not FOLDER_ID:
-        raise ValueError("Missing required environment variables: GOOGLE_CREDENTIALS_JSON or FOLDER_ID")
+    if not credentials_path or not FOLDER_ID:
+        raise ValueError("Faltan variables de entorno requeridas: GOOGLE_APPLICATION_CREDENTIALS or FOLDER_ID")
 
-    creds_info = json.loads(GOOGLE_CREDENTIALS_JSON)
-    creds = service_account.Credentials.from_service_account_info(creds_info, scopes=SCOPES)
+    if not os.path.exists(credentials_path):
+        raise FileNotFoundError(f"El archivo de credenciales no se encontró en la ruta: {credentials_path}")
 
+    creds = service_account.Credentials.from_service_account_file(credentials_path, scopes=SCOPES)
     service = build('drive', 'v3', credentials=creds)
+    
     results = service.files().list(
         q=f"'{FOLDER_ID}' in parents and trashed=false",
         pageSize=200,
@@ -50,7 +56,6 @@ def get_drive_files_logic() -> List[Dict[str, Any]]:
     report_files = []
     preview_suffix = '_preview'
 
-    # First, separate files and map the preview images
     for file in all_files:
         base_name, extension = os.path.splitext(file['name'])
         if base_name.endswith(preview_suffix):
@@ -61,7 +66,6 @@ def get_drive_files_logic() -> List[Dict[str, Any]]:
         else:
             report_files.append(file)
     
-    # Second, enrich the report files with their custom preview
     enriched_reports = []
     for report in report_files:
         report_base_name, _ = os.path.splitext(report['name'])
@@ -72,9 +76,7 @@ def get_drive_files_logic() -> List[Dict[str, Any]]:
         
     return enriched_reports
 
-# Define the API endpoint
-# Vercel maps /api/drive-files to this file, so the internal route is '/'
-@app.get("/")
+@app.get("/api/drive-files")
 def get_drive_files_endpoint():
     """
     FastAPI endpoint to get the list of files from Google Drive.
@@ -82,9 +84,13 @@ def get_drive_files_endpoint():
     try:
         files = get_drive_files_logic()
         return files
-    except ValueError as e:
-        return {"error": str(e)}, 500
+    except (ValueError, FileNotFoundError) as e:
+        return JSONResponse(status_code=400, content={"error": str(e)})
     except HttpError as e:
-        return {"error": f"An API error occurred: {e}"}, 500
+        try:
+            error_details = json.loads(e.content)
+            return JSONResponse(status_code=e.resp.status, content=error_details)
+        except (json.JSONDecodeError, AttributeError):
+            return JSONResponse(status_code=500, content={"error": f"An API error occurred: {e}"})
     except Exception as e:
-        return {"error": f"An unexpected error occurred: {e}"}, 500
+        return JSONResponse(status_code=500, content={"error": f"An unexpected error occurred: {e}"})
