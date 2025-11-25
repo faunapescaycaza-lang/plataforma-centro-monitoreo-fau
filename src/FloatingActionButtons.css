@@ -1,0 +1,62 @@
+/* Este archivo ahora contiene estilos base y de color para los botones de reporte */
+
+.fab-container {
+  position: fixed; /* Posición fija en la pantalla */
+  bottom: 20px;    /* 20px desde la parte inferior */
+  right: 20px;     /* 20px desde la derecha */
+  display: flex;
+  flex-direction: column; /* Apilar los botones verticalmente */
+  gap: 10px;             /* Espacio entre los botones */
+  z-index: 1000;         /* Asegurar que estén por encima de otros elementos */
+}
+
+.fab-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width y height fijos eliminados, usaremos padding para determinar el tamaño */
+  padding: 12px 20px; /* Suficiente padding para el texto y que se vea ovalado */
+  border-radius: 30px; /* Bordes muy redondeados para el efecto cápsula */
+  border: none;
+  font-size: 1em; /* Restaurar tamaño de fuente para el texto */
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap; /* Evitar que el texto se rompa */
+  gap: 8px; /* Espacio entre el icono y el texto */
+}
+
+.fab-button:hover {
+  transform: translateY(-3px); /* Pequeño efecto de elevación al pasar el ratón */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.camera-report {
+  background-color: #424242; /* Gris oscuro para el reporte de cámara */
+}
+
+.camera-report:hover {
+  background-color: #616161; /* Gris un poco más claro en hover */
+}
+
+.fire-report {
+  background-color: #ff5722; /* Naranja rojizo para el reporte de incendio */
+}
+
+.fire-report:hover {
+  background-color: #e64a19; /* Naranja rojizo más oscuro en hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .fab-button {
+    padding: 10px 15px;
+    font-size: 0.9em;
+    border-radius: 25px; /* Ajustar para móvil */
+    gap: 5px;
+  }
+}

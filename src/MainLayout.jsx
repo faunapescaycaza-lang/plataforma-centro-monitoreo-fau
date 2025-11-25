@@ -1,12 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import MainMenu from './MainMenu';
+import FloatingActionButtons from './FloatingActionButtons'; // Importar el componente completo
 
 const MainLayout = () => {
   return (
     <>
       <MainMenu />
-      <Outlet /> {/* This will render the matched child route's component */}
+      <Outlet />
+      <FloatingActionButtons /> {/* Renderizar el componente completo */}
     </>
   );
 };
