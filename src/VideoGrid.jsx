@@ -5,14 +5,20 @@ import './VideoGrid.css';
 
 const initialVideos = [
   { id: 1, title: 'Villa Pehuenia', src: '/Videos/Villa_Pehuenia.gif' },
-  { id: 2, title: 'Camera 2' },
-  { id: 3, title: 'Camera 3' },
-  { id: 4, title: 'Camera 4' },
-  { id: 5, title: 'Camera 5' },
-  { id: 6, title: 'Camera 6' },
-  { id: 7, title: 'Camera 7' },
-  { id: 8, title: 'Camera 8' },
-  { id: 9, title: 'Camera 9' },
+  { id: 2, title: 'Collon Cura', src: '/Videos/collon_cura.gif' },
+  { id: 3, title: 'Lago MaryMenuco', src: '/Videos/marymenunco.gif' },
+  { id: 4, title: 'S.M de los Andes (CC Diaz)', src: '/Videos/sma_Casa_de_te_arrayan_2.gif' },
+  { id: 5, title: 'Cerro Bayo VLA', src: '/Videos/Cerro_bayo.gif' },
+  { id: 6, title: 'Rahue', src: '/Videos/rahue.gif'  },
+  { id: 7, title: 'S.M de los Andes (parques)', src: '/Videos/sma_parques.gif' },
+  { id: 8, title: 'Villa Lago Meliquina', src: '/Videos/meliquina.gif' },
+  { id: 9, title: 'Boca Chimehuin', src: '/Videos/boca_chimehuin.gif' },
+  { id: 10, title: 'Camera 10' },
+  { id: 11, title: 'Camera 11' },
+  { id: 12, title: 'Camera 12' },
+  { id: 13, title: 'Camera 13' },
+  { id: 14, title: 'Camera 14' },
+  { id: 15, title: 'Camera 15' },
 ];
 
 // Simplified item component - just shows a thumbnail/placeholder
