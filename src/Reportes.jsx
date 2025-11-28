@@ -41,6 +41,16 @@ const Reportes = () => {
 
   return (
     <div className="reportes-container">
+      <div className="report-card" style={{ maxWidth: '50%', margin: '0 auto 20px' }}>
+          <div className="report-images">
+            <img src="/images/Captura de pantalla 2025-11-27 230835.png" alt="Monitoreo Fire 2025-2026" className="report-image" />
+          </div>
+          <div className="report-content">
+            <h2>Monitoreo Fire 2025-2026</h2>
+            <p>Plataforma de monitoreo de incendios para la temporada 2025-2026.</p>
+            <a href="https://faunapescaycaza-lang.github.io/monitoreo-fire-2025-2026/" target="_blank" rel="noopener noreferrer" className="read-more-button">Ver plataforma</a>
+          </div>
+        </div>
       <h1>Nuestros Reportes</h1>
       <div className="reportes-grid">
         {reports.map((report) => (

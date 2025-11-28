@@ -30,6 +30,22 @@ const DatosSatelitales = () => {
               <p>Consulta información detallada del viento, lluvia, temperatura y focos de incendio en tiempo real.</p>
           </div>
         </a>
+
+        <a href="https://slider.cira.colostate.edu/?sat=goes-19&sec=full_disk&x=11996&y=18290.400390625&z=4&angle=0&im=12&ts=1&st=0&et=0&speed=130&motion=loop&maps%5Bborders%5D=white&p%5B0%5D=cira_natural_fire_color&opacity%5B0%5D=1&pause=20251127133020&slider=-1&hide_controls=0&mouse_draw=0&follow_feature=0&follow_hide=0&s=rammb-slider&draw_color=FFD700&draw_width=6" target="_blank" rel="noopener noreferrer" className="modis-card">
+          <img src="/images/Captura de pantalla 2025-11-27 230154.png" alt="Datos GOES-19 CIRA" className="modis-image" />
+          <div className="modis-card-overlay">
+              <h2>GOES-19 CIRA</h2>
+              <p>Imágenes satelitales avanzadas para el seguimiento de incendios y fenómenos meteorológicos.</p>
+          </div>
+        </a>
+
+        <a href="https://firms.modaps.eosdis.nasa.gov/map/#d:2025-11-25..2025-11-26;@-70.1,-37.3,8.6z" target="_blank" rel="noopener noreferrer" className="modis-card">
+          <img src="/images/Captura de pantalla 2025-11-27 230452.png" alt="Datos FIRMS NASA" className="modis-image" />
+          <div className="modis-card-overlay">
+              <h2>FIRMS NASA</h2>
+              <p>Sistema de Información sobre Incendios para la Gestión de Recursos de la NASA.</p>
+          </div>
+        </a>
       </div>
     </div>
   );

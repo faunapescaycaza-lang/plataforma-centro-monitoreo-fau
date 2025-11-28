@@ -25,15 +25,22 @@ const PaginaWeb = () => {
             >
               Envio de permisos
             </a>
-            <a
-              href="https://cazaypesca.neuquen.gob.ar/consultar-permisos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="buy-permit-button"
-            >
-              Fiscalizar Permiso
-            </a>
-          </div>
+                          <a
+                            href="https://cazaypesca.neuquen.gob.ar/consultar-permisos"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="buy-permit-button"
+                          >
+                            Fiscalizar Permiso
+                          </a>
+                                                      <a
+                                                        href="https://wa.me/5492972544017"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="buy-permit-button bot-pesca-button"
+                                                      >
+                                                        Bot de Pesca NQN
+                                                      </a>          </div>
         </div>
       </div>
     </div>

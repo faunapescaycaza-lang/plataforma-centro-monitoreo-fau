@@ -6,11 +6,11 @@ const FloatingActionButtons = () => {
   const navigate = useNavigate();
 
   const handleReportCamera = () => {
-    navigate('/reportes?type=camera');
+    window.open('https://cazaypesca.neuquen.gob.ar/?ff_landing=49', '_blank');
   };
 
   const handleReportFire = () => {
-    navigate('/reportes?type=fire');
+    window.open('https://cazaypesca.neuquen.gob.ar/?ff_landing=50', '_blank');
   };
 
   return (

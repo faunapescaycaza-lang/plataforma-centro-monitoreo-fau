@@ -19,6 +19,7 @@ const CentroMonitoreos = () => {
               <ul>
                   <li><div className="node seguridad">C.M. Policía (VLA)</div></li>
                   <li><div className="node privado">Cerro Bayo VLA</div></li>
+                  <li><div className="node seguridad">Municipalidad VLA</div></li>
               </ul>
           </li>
           <li>

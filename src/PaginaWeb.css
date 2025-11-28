@@ -70,3 +70,11 @@
   box-shadow: 0 6px 15px rgba(0, 170, 255, 0.4);
 }
 
+.bot-pesca-button {
+  background-color: #28a745; /* A shade of green */
+}
+
+.bot-pesca-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
