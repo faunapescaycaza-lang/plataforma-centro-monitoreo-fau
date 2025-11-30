@@ -57,6 +57,9 @@ const MainMenu = () => {
         <li>
           <Link to="/datos-satelitales" onClick={closeMobileMenu} className={getLinkClassName('/datos-satelitales')}>Datos Satelitales</Link>
         </li>
+        <li>
+          <Link to="/meteorologia" onClick={closeMobileMenu} className={getLinkClassName('/meteorologia')}>Meteorología</Link>
+        </li>
         {/* Logout button for mobile view */}
         <li className="mobile-logout">
           <button onClick={() => { closeMobileMenu(); signOut(); }}>Cerrar Sesión</button>

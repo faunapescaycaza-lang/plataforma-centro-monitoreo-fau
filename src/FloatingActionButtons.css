@@ -51,6 +51,14 @@
   background-color: #e64a19; /* Naranja rojizo más oscuro en hover */
 }
 
+.request-camera {
+  background-color: #2196f3; /* Azul para la solicitud de cámara */
+}
+
+.request-camera:hover {
+  background-color: #1976d2; /* Azul más oscuro en hover */
+}
+
 /* Responsive adjustments for smaller screens */
 @media (max-width: 600px) {
   .fab-button {

@@ -46,6 +46,14 @@ const DatosSatelitales = () => {
               <p>Sistema de Información sobre Incendios para la Gestión de Recursos de la NASA.</p>
           </div>
         </a>
+
+        <a href="https://georayos.citedef.gob.ar/#/" target="_blank" rel="noopener noreferrer" className="modis-card">
+          <img src="/Captura de pantalla 2025-11-30 150422.png" alt="Georayos" className="modis-image" />
+          <div className="modis-card-overlay">
+              <h2>Georayos</h2>
+              <p>Herramienta para la visualización de datos geoespaciales.</p>
+          </div>
+        </a>
       </div>
     </div>
   );

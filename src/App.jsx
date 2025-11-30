@@ -18,6 +18,7 @@ import Contactos from './Contactos';
 import Reportes from './Reportes';
 import ReporteDetalle from './ReporteDetalle';
 import DatosSatelitales from './DatosSatelitales'; // Nueva importación
+import Meteorologia from './Meteorologia'; // Nueva importación
 
 import PaginaWeb from './PaginaWeb';
 import MapasPage from './MapasPage';
@@ -57,6 +58,7 @@ function App() {
         <Route path="reportes/:reportId" element={<ReporteDetalle />} />
         <Route path="pagina-web" element={<PaginaWeb />} />
         <Route path="datos-satelitales" element={<DatosSatelitales />} /> {/* Nueva ruta */}
+        <Route path="meteorologia/*" element={<Meteorologia />} />
       </Route>
     </Routes>
   );

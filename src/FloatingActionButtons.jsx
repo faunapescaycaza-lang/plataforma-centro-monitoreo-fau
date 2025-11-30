@@ -13,6 +13,10 @@ const FloatingActionButtons = () => {
     window.open('https://cazaypesca.neuquen.gob.ar/?ff_landing=50', '_blank');
   };
 
+  const handleRequestCamera = () => {
+    window.open('https://cazaypesca.neuquen.gob.ar/?ff_landing=51', '_blank');
+  };
+
   return (
     <div className="fab-container">
       <button className="fab-button camera-report" onClick={handleReportCamera}>
@@ -20,6 +24,9 @@ const FloatingActionButtons = () => {
       </button>
       <button className="fab-button fire-report" onClick={handleReportFire}>
         🔥 Reportar Incendio
+      </button>
+      <button className="fab-button request-camera" onClick={handleRequestCamera}>
+        ➕ Solicitud de cámara
       </button>
     </div>
   );
