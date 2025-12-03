@@ -40,6 +40,14 @@ const PaginaWeb = () => {
                                                         className="buy-permit-button bot-pesca-button"
                                                       >
                                                         Bot de Pesca NQN
+                                                      </a>
+                                                      <a
+                                                        href="https://drive.google.com/file/d/1Y2OSlOKtV1dBeCY1C5N8Pdwn3J-Mzzkf/view?usp=sharing"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="buy-permit-button"
+                                                      >
+                                                        Reglamento<br />de Pesca 2025-2026
                                                       </a>          </div>
         </div>
       </div>

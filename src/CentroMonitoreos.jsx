@@ -31,6 +31,13 @@ const CentroMonitoreos = () => {
                   <li><div className="node privado">Hostería Boca Chimehuin JDLA</div></li>
               </ul>
           </li>
+          <li>
+              <div className="node localidad">Villa Traful</div>
+              <ul>
+                  <li><div className="node seguridad">Comuna de Villa Traful</div></li>
+                  <li><div className="node emergencia">Cuartel de Bomberos</div></li>
+              </ul>
+          </li>
           <li><div className="node localidad">Chos Malal (CHM)</div>
               <ul>
                   <li><div className="node fauna">Oficina Fauna (CHM)</div></li>

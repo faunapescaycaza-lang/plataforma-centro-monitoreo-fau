@@ -62,6 +62,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
   /* Removed margin-top: 20px; as it's handled by presentation-buttons gap */
   box-shadow: 0 4px 10px rgba(0, 170, 255, 0.3);
+  text-align: center;
 }
 
 .buy-permit-button:hover {
