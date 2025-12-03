@@ -11,6 +11,7 @@ const maps = [
   { to: "/map/anp-nqn", title: "Areas Naturales Protegidas NQN" },
   { to: "/map/anp-copahue", title: "ANP Copahue" },
   { to: "/map/ley-bosque-sur", title: "Mapa de Ley de Bosque Zona Sur" },
+  { to: "/map/delegaciones-fauna", title: "Delegaciones Fauna" },
 ];
 
 const MapasPage = () => {

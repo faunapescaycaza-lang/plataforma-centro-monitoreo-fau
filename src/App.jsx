@@ -23,6 +23,7 @@ import Meteorologia from './Meteorologia'; // Nueva importación
 import PaginaWeb from './PaginaWeb';
 import MapasPage from './MapasPage';
 import LeyBosqueSurMap from './LeyBosqueSurMap';
+import DelegacionesFaunaMap from './DelegacionesFaunaMap';
 import './App.css';
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path="map/anp-nqn" element={<ANPNQNMap />} />
         <Route path="map/anp-copahue" element={<ANPCopahueMap />} />
         <Route path="map/ley-bosque-sur" element={<LeyBosqueSurMap />} />
+        <Route path="map/delegaciones-fauna" element={<DelegacionesFaunaMap />} />
         <Route path="centro-monitoreos" element={<CentroMonitoreos />} />
         <Route path="0800-fauna" element={<Fauna0800 />} />
         <Route path="contactos" element={<Contactos />} />
