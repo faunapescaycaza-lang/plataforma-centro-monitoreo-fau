@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import './MainMenu.css';
 import { useAuth } from './AuthProvider'; // Import useAuth
@@ -7,6 +7,7 @@ const MainMenu = () => {
   const { signOut } = useAuth(); // Get the signOut function
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation(); // Get current location
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -19,6 +20,28 @@ const MainMenu = () => {
   const getLinkClassName = (path) => {
     return `menu-button ${location.pathname === path ? 'active' : ''}`;
   };
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
 
   return (
     <nav className="main-menu">
@@ -67,6 +90,9 @@ const MainMenu = () => {
       </ul>
       <div className="main-menu-logout">
         <button onClick={signOut}>Cerrar Sesión</button>
+        <button onClick={toggleFullscreen} className="fullscreen-button-main-menu">
+          {isFullscreen ? '✕' : '⛶'}
+        </button>
       </div>
     </nav>
   );

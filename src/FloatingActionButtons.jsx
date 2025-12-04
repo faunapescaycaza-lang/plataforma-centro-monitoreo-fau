@@ -19,15 +19,15 @@ const FloatingActionButtons = () => {
 
   return (
     <div className="fab-container">
-      <button className="fab-button camera-report" onClick={handleReportCamera}>
-        📸 Reportar cámara caída
-      </button>
-      <button className="fab-button fire-report" onClick={handleReportFire}>
-        🔥 Reportar Incendio
-      </button>
-      <button className="fab-button request-camera" onClick={handleRequestCamera}>
-        ➕ Solicitud de cámara
-      </button>
+        <button className="fab-button camera-report" onClick={handleReportCamera}>
+          📸 Reportar cámara caída
+        </button>
+        <button className="fab-button fire-report" onClick={handleReportFire}>
+          🔥 Reportar Incendio
+        </button>
+        <button className="fab-button request-camera" onClick={handleRequestCamera}>
+          ➕ Solicitud de cámara
+        </button>
     </div>
   );
 };
