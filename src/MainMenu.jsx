@@ -58,8 +58,13 @@ const MainMenu = () => {
         <li>
           <Link to="/mapas" onClick={closeMobileMenu} className={getLinkClassName('/mapas')}>Mapas SIG</Link>
         </li>
-        <li>
+        <li className="dropdown">
           <Link to="/dashboard" onClick={closeMobileMenu} className={getLinkClassName('/dashboard')}>Cámaras</Link>
+          <div className="dropdown-content">
+
+            <a href="https://envivo.cotesma.coop/live/index.html" target="_blank" rel="noopener noreferrer">Ver en vivo S.M de los Andes</a>
+            <a href="https://www.cerrobayo.com.ar/montana/camara/lagos.php" target="_blank" rel="noopener noreferrer">Ver en vivo Cerro bayo</a>
+          </div>
         </li>
         <li>
           <Link to="/centro-monitoreos" onClick={closeMobileMenu} className={getLinkClassName('/centro-monitoreos')}>Centro de Monitoreos</Link>
@@ -83,10 +88,7 @@ const MainMenu = () => {
         <li>
           <Link to="/meteorologia" onClick={closeMobileMenu} className={getLinkClassName('/meteorologia')}>Meteorología</Link>
         </li>
-        {/* Logout button for mobile view */}
-        <li className="mobile-logout">
-          <button onClick={() => { closeMobileMenu(); signOut(); }}>Cerrar Sesión</button>
-        </li>
+
       </ul>
       <div className="main-menu-logout">
         <button onClick={signOut}>Cerrar Sesión</button>
