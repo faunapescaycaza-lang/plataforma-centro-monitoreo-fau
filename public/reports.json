@@ -1,9 +1,24 @@
 [
   {
     "id": "1",
-    "title": "Mi Primer Reporte",
+    "title": "Monitoreo Tormenta Eléctrica 08 y 09 de diciembre 2025",
     "description": "Este es un ejemplo de cómo crear tu propio reporte. Puedes cambiar este texto, añadir más detalles y tus propias imágenes. Recuerda usar un ID único para cada reporte.",
-    "imageUrls": ["/Imagenes/pagina_fauna.png"]
+    "imageUrls": [
+      "/tormenta_08_09_dic/annotated_image (1).png",
+      "/tormenta_08_09_dic/annotated_image (10).png",
+      "/tormenta_08_09_dic/annotated_image (11).png",
+      "/tormenta_08_09_dic/annotated_image (12).png",
+      "/tormenta_08_09_dic/annotated_image (14).png",
+      "/tormenta_08_09_dic/annotated_image (2).png",
+      "/tormenta_08_09_dic/annotated_image (3).png",
+      "/tormenta_08_09_dic/annotated_image (4).png",
+      "/tormenta_08_09_dic/annotated_image (5).png",
+      "/tormenta_08_09_dic/annotated_image (6).png",
+      "/tormenta_08_09_dic/annotated_image (7).png",
+      "/tormenta_08_09_dic/annotated_image (8).png",
+      "/tormenta_08_09_dic/annotated_image (9).png",
+      "/tormenta_08_09_dic/annotated_image.png"
+    ]
   },
   {
     "id": "2",
