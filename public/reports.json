@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "Monitoreo Tormenta Eléctrica 08 y 09 de diciembre 2025",
-    "description": "Este es un ejemplo de cómo crear tu propio reporte. Puedes cambiar este texto, añadir más detalles y tus propias imágenes. Recuerda usar un ID único para cada reporte.",
+    "description": "Sistema de monitoreo de tormentas eléctricas mediante la red de cámaras de fauna.",
     "imageUrls": [
       "/tormenta_08_09_dic/annotated_image (1).png",
       "/tormenta_08_09_dic/annotated_image (10).png",

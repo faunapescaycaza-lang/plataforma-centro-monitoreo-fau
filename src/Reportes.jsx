@@ -47,9 +47,7 @@ const Reportes = () => {
           <div key={report.id} className="report-card">
             <div className="report-images">
               {Array.isArray(report.imageUrls) && report.imageUrls.length > 0 ? (
-                report.imageUrls.map((url, index) => (
-                  <img key={index} src={url} alt={`${report.title} ${index + 1}`} className="report-image" />
-                ))
+                <img src={report.imageUrls[0]} alt={`${report.title} 1`} className="report-image" />
               ) : (
                 <div className="no-image-placeholder">No Image Available</div>
               )}
