@@ -48,6 +48,7 @@ const Reportes = () => {
           href="https://faunapescaycaza-lang.github.io/monitoreo-fire-2025-2026/" 
           target="_blank" 
           rel="noopener noreferrer"
+          className="external-report-button"
         >
           Reporte de Monitoreo de Incendios 2025-2026
         </a>

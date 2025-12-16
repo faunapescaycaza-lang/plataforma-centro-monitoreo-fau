@@ -100,3 +100,23 @@
 .read-more-button:hover {
     background-color: #0056b3;
 }
+
+.external-report-button {
+    display: inline-block; /* Use inline-block for proper spacing with text */
+    padding: 15px 25px; /* Increased padding for a larger button */
+    background-color: #28a745; /* A different color to distinguish */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em; /* Larger font size */
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-top: 20px; /* Add some space above the button */
+    margin-bottom: 20px;
+}
+
+.external-report-button:hover {
+    background-color: #218838;
+}
