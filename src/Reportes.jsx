@@ -42,6 +42,16 @@ const Reportes = () => {
   return (
     <div className="reportes-container">
       <h1>Nuestros Reportes</h1>
+      <p>
+        También puedes ver nuestro reporte de monitoreo de incendios aquí:{" "}
+        <a 
+          href="https://faunapescaycaza-lang.github.io/monitoreo-fire-2025-2026/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          Reporte de Monitoreo de Incendios 2025-2026
+        </a>
+      </p>
       <div className="reportes-grid">
         {reports.map((report) => (
           <div key={report.id} className="report-card">
