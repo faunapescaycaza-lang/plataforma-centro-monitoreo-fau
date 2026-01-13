@@ -45,7 +45,7 @@ const Reportes = () => {
       <p>
         También puedes ver nuestro reporte de monitoreo de incendios aquí:{" "}
         <a 
-          href="https://faunapescaycaza-lang.github.io/monitoreo-fire-2025-2026/" 
+          href="https://firenqn.duckdns.org/" 
           target="_blank" 
           rel="noopener noreferrer"
           className="external-report-button"
