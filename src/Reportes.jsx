@@ -45,7 +45,7 @@ const Reportes = () => {
       <p>
         También puedes ver nuestro reporte de monitoreo de incendios aquí:{" "}
         <a 
-          href="https://firenqn.duckdns.org/" 
+          href="https://fire-nqn-app.onrender.com/" 
           target="_blank" 
           rel="noopener noreferrer"
           className="external-report-button"
