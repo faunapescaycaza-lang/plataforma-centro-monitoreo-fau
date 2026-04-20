@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Import useLocation
+import { Link, useLocation } from 'react-router-dom'; 
 import './MainMenu.css';
-import { useAuth } from './AuthProvider'; // Import useAuth
 
 const MainMenu = () => {
-  const { signOut } = useAuth(); // Get the signOut function
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation(); // Get current location
+  const location = useLocation(); 
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -91,7 +89,6 @@ const MainMenu = () => {
 
       </ul>
       <div className="main-menu-logout">
-        <button onClick={signOut}>Cerrar Sesión</button>
         <button onClick={toggleFullscreen} className="fullscreen-button-main-menu">
           {isFullscreen ? '✕' : '⛶'}
         </button>

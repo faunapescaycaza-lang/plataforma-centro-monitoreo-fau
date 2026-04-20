@@ -1,8 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from './MainLayout';
-import ProtectedRoute from './ProtectedRoute'; // Descomentado
-import AuthPage from './Auth';
 import WelcomeScreen from './WelcomeScreen';
 import Dashboard from './Dashboard';
 import Ruta7LagosMap from './Ruta7LagosMap';
@@ -17,8 +15,8 @@ import Fauna0800 from './Fauna0800';
 import Contactos from './Contactos';
 import Reportes from './Reportes';
 import ReporteDetalle from './ReporteDetalle';
-import DatosSatelitales from './DatosSatelitales'; // Nueva importación
-import Meteorologia from './Meteorologia'; // Nueva importación
+import DatosSatelitales from './DatosSatelitales'; 
+import Meteorologia from './Meteorologia'; 
 
 import PaginaWeb from './PaginaWeb';
 import MapasPage from './MapasPage';
@@ -29,18 +27,10 @@ import './App.css';
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<AuthPage />} />
-
-      {/* Todas las rutas dentro de ProtectedRoute requieren autenticación */}
       <Route
         path="/"
-        element={
-          <ProtectedRoute>
-            <MainLayout />
-          </ProtectedRoute>
-        }
+        element={<MainLayout />}
       >
-        {/* Rutas protegidas */}
         <Route index element={<WelcomeScreen />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="mapas" element={<MapasPage />} />
@@ -59,11 +49,11 @@ function App() {
         <Route path="reportes" element={<Reportes />} />
         <Route path="reportes/:reportId" element={<ReporteDetalle />} />
         <Route path="pagina-web" element={<PaginaWeb />} />
-        <Route path="datos-satelitales" element={<DatosSatelitales />} /> {/* Nueva ruta */}
+        <Route path="datos-satelitales" element={<DatosSatelitales />} />
         <Route path="meteorologia/*" element={<Meteorologia />} />
       </Route>
     </Routes>
   );
 }
 
-export default App;
+export default App;
